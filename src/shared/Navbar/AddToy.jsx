@@ -4,14 +4,9 @@ import Swal from 'sweetalert2'
 
 const AddToy = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
-  };
-
-  const handleSubcategoryChange = (event) => {
-    setSelectedSubcategory(event.target.value);
   };
 
   const handleRegister = (event) => {
@@ -36,7 +31,6 @@ const AddToy = () => {
       quantity,
       details,
       selectedCategory,
-      selectedSubcategory,
     };
     fetch("http://localhost:5000/addToy", {
         method: "POST",
@@ -117,7 +111,7 @@ const AddToy = () => {
             </div>
             <div className="d-flex gap-4">
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Enter Rating</Form.Label>
+              <Form.Label>Enter Rating</Form.Label>
                 <Form.Control
                   type="text"
                   name="rating"
@@ -145,39 +139,6 @@ const AddToy = () => {
               <option value="Trucks">Trucks</option>
               <option value="Buses">Buses</option>
             </Form.Select>
-            {/* ... */}
-            {selectedCategory && (
-              <Form.Select
-                aria-label="Default select example"
-                onChange={handleSubcategoryChange}
-                value={selectedSubcategory}
-              >
-                <option value="">Select a sub-category</option>
-                {selectedCategory === "Sports Cars" && (
-                  <>
-                    <option value="Convertibles">Convertible</option>
-                    <option value="Racing Cars">Racing Car</option>
-                    <option value="Luxury Cars">Luxury Car</option>
-                  </>
-                )}
-                {selectedCategory === "Trucks" && (
-                  <>
-                    <option value="Pickup Trucks">Pickup Truck</option>
-                    <option value="Dump Trucks">Dump Truck</option>
-                    <option value="FireTrucks">Fire Truck</option>
-                  </>
-                )}
-                {selectedCategory === "Buses" && (
-                  <>
-                    <option value="School Buses">School Bus</option>
-                    <option value="Double Decker Buses">
-                      Double Decker Bus
-                    </option>
-                    <option value="Tour Buses">Tour Bus</option>
-                  </>
-                )}
-              </Form.Select>
-            )}
             <Form.Group
               className="mb-0"
               controlId="exampleForm.ControlTextarea1"

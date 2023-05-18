@@ -1,4 +1,3 @@
-
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { useForm } from "react-hook-form";
@@ -7,11 +6,19 @@ const UpdateToyModal = (props) => {
   const {
     register,
     handleSubmit,
+    setValue, // Add setValue from react-hook-form
     watch,
     formState: { errors },
   } = useForm();
 
   const { handleToyUpdate } = props;
+
+  // Update selected category value when category selection changes
+  const handleCategoryChange = (event) => {
+    const selectedCategory = event.target.value;
+    setValue("selectedCategory", selectedCategory);
+  };
+
   return (
     <Modal
       {...props}
@@ -34,7 +41,6 @@ const UpdateToyModal = (props) => {
             handleToyUpdate(data);
             props.onHide(); // Close the modal after submitting the form
           })}
-          
         >
           {errors.exampleRequired && <span>This field is required</span>}
           <input
@@ -84,27 +90,26 @@ const UpdateToyModal = (props) => {
             placeholder="Details"
             defaultValue={props?.toy?.details}
           />
-          <input
+          <select
             className="text-input"
             {...register("selectedCategory")}
-            placeholder="Details"
-            defaultValue={props?.toy?.selectedCategory}
-          />
-          <input
-            className="text-input"
-            {...register("selectedSubcategory")}
-            placeholder="Details"
-            defaultValue={props?.toy?.selectedSubcategory}
-          />
+            onChange={handleCategoryChange} // Add onChange event handler
+            value={watch("selectedCategory")} // Use watch to get the current value
+          >
+            <option value="">Select a category</option>
+            <option value="Sports Cars">Sports Cars</option>
+            <option value="Trucks">Trucks</option>
+            <option value="Buses">Buses</option>
+          </select>
           <input
             className="text-input"
             {...register("photo")}
-            placeholder="Photo Url"
+            placeholder="Photo URL"
             type="url"
             defaultValue={props?.toy?.photo}
           />
           <br />
-          <input className="submit-btn mt-4" value="Update Job" type="submit" />
+          <input className="submit-btn mt-4" value="Update Toy" type="submit" />
         </form>
       </Modal.Body>
       <Modal.Footer>
@@ -116,4 +121,3 @@ const UpdateToyModal = (props) => {
 };
 
 export default UpdateToyModal;
-

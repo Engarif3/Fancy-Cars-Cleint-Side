@@ -98,7 +98,7 @@ const MyToys = () => {
               <th>Rating</th>
               <th>Quantity</th>
               <th>Category</th>
-              <th>Sub-Category</th>
+              {/* <th>Sub-Category</th> */}
               <th>Description</th>
               <th>Edit</th>
               <th>Action</th>
@@ -115,7 +115,7 @@ const MyToys = () => {
                 <td>{toy.rating}</td>
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
-                <td>{toy.selectedSubcategory}</td>
+                {/* <td>{toy.selectedSubcategory}</td> */}
                 <td>{toy.details}</td>
                 <td>
                   <Button
