@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useContext } from "react";
 import Table from "react-bootstrap/Table";
@@ -9,14 +8,8 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import UpdateToyModal from "./UpdateToyModal";
 import Swal from "sweetalert2";
 
-
 const MyToys = () => {
   const { user } = useContext(AuthContext);
-//   const [jobs, setJobs] = useState([]);
-//   const [searchText, setSearchText] = useState("");
-  const [modalShow, setModalShow] = useState(false);
-//   const [control, setControl] = useState(false);
-
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
@@ -26,7 +19,6 @@ const MyToys = () => {
         setToys(data);
       });
   }, []);
-
 
   const handleToyUpdate = (data) => {
     fetch(`http://localhost:5000/updateToy/${data._id}`, {
@@ -52,38 +44,41 @@ const MyToys = () => {
         console.log(error);
       });
   };
-  
 
-
-
-  const handleDelete =(id)=>{
-    
-     const proceed = confirm("Are you sure you want to delete?");
-     if (proceed){
-       fetch(`http://localhost:5000/myToy/${id}`, {
-         method: "DELETE"
-       })
-       .then(res => res.json())
-       .then(data =>{
-        if (data.deletedCount>0){
+  const handleDelete = (id) => {
+    const proceed = confirm("Are you sure you want to delete?");
+    if (proceed) {
+      fetch(`http://localhost:5000/myToy/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
             Swal.fire({
-                title: 'Success!',
-                text: 'Deleted Successfully',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
-              const remaining = toys.filter(toy=>toy._id !== id)
+              title: "Success!",
+              text: "Deleted Successfully",
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+            const remaining = toys.filter((toy) => toy._id !== id);
             setToys(remaining);
-        }
-        //  if(data.deletedCount>0){
-        //     alert("Delete Successful");
-        //     const remaining = toys.filter(toy=>toy._id !== id)
-        //     setToys(remaining);
-        //  }
-       })
-     }
-  }
-  
+          }
+        });
+    }
+  };
+
+  const [editModalShow, setEditModalShow] = useState(false);
+  const [editedToy, setEditedToy] = useState(null);
+
+  const handleEditModalShow = (toy) => {
+    setEditedToy(toy);
+    setEditModalShow(true);
+  };
+
+  const handleEditModalHide = () => {
+    setEditModalShow(false);
+    setEditedToy(null);
+  };
 
   return (
     <div>
@@ -111,7 +106,6 @@ const MyToys = () => {
           </thead>
           <tbody>
             {toys?.map((toy, index) => (
-              
               <tr key={toy._id}>
                 <td>{index + 1}</td>
                 <td>{toy.toyName}</td>
@@ -122,31 +116,33 @@ const MyToys = () => {
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
                 <td>{toy.selectedSubcategory}</td>
-                <td>{toy.details}
-                </td>
+                <td>{toy.details}</td>
                 <td>
-                  <Button variant="primary" onClick={() => setModalShow(true)}>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleEditModalShow(toy)}
+                  >
                     Edit
                   </Button>
-                  <UpdateToyModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                    toy={toy}
-                    key={toy._id}
-                    handleToyUpdate={handleToyUpdate}
-                  />
                 </td>
                 <td>
-                  <button onClick={()=>handleDelete(toy._id)}>Delete</button>
+                  <button onClick={() => handleDelete(toy._id)}>Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
+      {editedToy && (
+        <UpdateToyModal
+          show={editModalShow}
+          onHide={handleEditModalHide}
+          toy={editedToy}
+          handleToyUpdate={handleToyUpdate}
+        />
+      )}
     </div>
   );
 };
 
 export default MyToys;
-

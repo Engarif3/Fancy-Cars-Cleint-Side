@@ -86,6 +86,18 @@ const UpdateToyModal = (props) => {
           />
           <input
             className="text-input"
+            {...register("selectedCategory")}
+            placeholder="Details"
+            defaultValue={props?.toy?.selectedCategory}
+          />
+          <input
+            className="text-input"
+            {...register("selectedSubcategory")}
+            placeholder="Details"
+            defaultValue={props?.toy?.selectedSubcategory}
+          />
+          <input
+            className="text-input"
             {...register("photo")}
             placeholder="Photo Url"
             type="url"
