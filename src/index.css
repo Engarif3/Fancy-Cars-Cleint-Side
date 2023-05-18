@@ -1,0 +1,8 @@
+nav a.active{
+    font-weight: bolder;
+    /* background-color: rgb(46, 78, 184); */
+    border-radius: 5px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
