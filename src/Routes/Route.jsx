@@ -10,6 +10,7 @@ import ErrorPage from "../Section/ErrorPage/ErrorPage";
 import AddToy from "../shared/Navbar/AddToy";
 import MyToys from "../shared/Navbar/MyToys";
 import ShopByCategory from "../Section/ShopByCategory";
+import AllToys from "../shared/Navbar/AllToys";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/myToys",
         element: <MyToys></MyToys>,
+      },
+      {
+        path: "/allToys",
+        element: <AllToys></AllToys>
       },
     //   {
     //     path:"/category",

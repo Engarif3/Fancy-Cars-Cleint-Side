@@ -55,7 +55,7 @@ const Navigationbar = () => {
                 </NavLink>
                 <NavLink
                   className="nav-link text-decoration-none text-black"
-                  to={"/blog"}
+                  to={"/allToys"}
                 >
                   All Toys
                 </NavLink>
