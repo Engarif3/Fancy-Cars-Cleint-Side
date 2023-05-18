@@ -46,25 +46,34 @@ const MyToys = () => {
   };
 
   const handleDelete = (id) => {
-    const proceed = confirm("Are you sure you want to delete?");
-    if (proceed) {
-      fetch(`http://localhost:5000/myToy/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            Swal.fire({
-              title: "Success!",
-              text: "Deleted Successfully",
-              icon: "success",
-              confirmButtonText: "Cool",
-            });
-            const remaining = toys.filter((toy) => toy._id !== id);
-            setToys(remaining);
-          }
-        });
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this item!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/myToy/${id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: 'Success!',
+                text: 'Deleted Successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              });
+              const remaining = toys.filter((toy) => toy._id !== id);
+              setToys(remaining);
+            }
+          });
+      }
+    });
   };
 
   const [editModalShow, setEditModalShow] = useState(false);
@@ -126,7 +135,7 @@ const MyToys = () => {
                   </Button>
                 </td>
                 <td>
-                  <button onClick={() => handleDelete(toy._id)}>Delete</button>
+                  <Button variant="danger" onClick={() => handleDelete(toy._id)}>Delete</Button>
                 </td>
               </tr>
             ))}
