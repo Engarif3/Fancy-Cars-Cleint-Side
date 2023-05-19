@@ -24,8 +24,7 @@ const ShopByCategory = () => {
 
   // Filter out empty categories and categories that were not provided
   const nonEmptyCategories = categories.filter(
-    (category) =>
-      category && filteredToys(category).length > 0
+    (category) => category && filteredToys(category).length > 0
   );
 
   return (
