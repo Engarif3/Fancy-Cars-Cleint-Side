@@ -11,6 +11,7 @@ import AddToy from "../shared/Navbar/AddToy";
 import MyToys from "../shared/Navbar/MyToys";
 import ShopByCategory from "../Section/ShopByCategory";
 import AllToys from "../shared/Navbar/AllToys";
+import SingleToy from "../shared/Navbar/SingleToy";
 
 const router = createBrowserRouter([
   {
@@ -46,13 +47,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/allToys",
-        element: <AllToys></AllToys>
+        element: <AllToys></AllToys>,
       },
-    //   {
-    //     path:"/category",
-    //     element:<ShopByCategory></ShopByCategory>,
-    //     loader: ()=>fetch("http://localhost:5000/myToy")
-    //   },
+      {
+        path: "/allToys/:id",
+        element: <SingleToy></SingleToy>,
+        loader: ({ params }) =>fetch(`http://localhost:5000/myToy/${params.id}`),
+      },
     ],
   },
 ]);

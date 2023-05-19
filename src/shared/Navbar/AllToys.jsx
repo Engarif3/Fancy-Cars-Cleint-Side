@@ -6,10 +6,12 @@ import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 // import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Link, useParams } from "react-router-dom";
 
 const AllToys = () => {
   // const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+ 
 
   useEffect(() => {
     fetch("http://localhost:5000/myToy")
@@ -18,12 +20,6 @@ const AllToys = () => {
         setToys(data);
       });
   }, []);
-
-  const handleDetails= () =>{
-    console.log("view setails")
-  }
-
-
 
 
   return (
@@ -60,11 +56,16 @@ const AllToys = () => {
                 <td>{toy.rating}</td>
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
-                {/* <td>{toy.selectedSubcategory}</td> */}
                 <td>{toy.details}</td>
               
                 <td>
-                  <Button variant="primary" onClick={() => handleDetails(toy._id)}>View Details</Button>
+                <div className="d-flex justify-content-center">
+              <Link className="w-75 mb-2" to={`/allToys/${toy._id}`}>
+                <Button  variant="primary">
+                  View Details
+                </Button>
+              </Link>
+            </div>
                 </td>
               </tr>
             ))}
