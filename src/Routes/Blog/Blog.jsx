@@ -1,79 +1,111 @@
 import React from "react";
-import {Container } from "react-bootstrap";
-import ReactToPrint from "react-to-print";
-import { FaPrint } from "react-icons/fa";
-import './Blog.css'
+import { Container } from "react-bootstrap";
 
 const Blog = () => {
-  const printRef = React.useRef();
   return (
     <Container className="text -center m-auto my-4">
-      <div id="print-container" ref={printRef}>
+      <div id="print-container">
         <h3 className="text-center text-decoration-underline mb-4">
           Questions & Answers
         </h3>
         <div>
           <h5>
-            1. Tell us the differences between uncontrolled and controlled
-            components.
+            1. What is an access token and refresh token? How do they work and
+            where should we store them on the client-side?
           </h5>
           <p className="ps-4">
-            A controlled component is a component that is controlled by the state of React and an uncontrolled component is a component that is maintained or controlled by its own internal state.
+            <b>Access Token:</b> An access token functions as evidence of
+            authorization, generated when logging into an app or granting
+            permission to an application. It acts as a digital ID card,
+            permitting access to specific parts of the app or website. <br />{" "}
+            <br />
+            <b>Refresh Token:</b> A refresh token serves as a unique code that assists
+            in acquiring a new access token upon the expiration of the current
+            one. It acts like a key, enabling the renewal of authorization
+            without repeating the entire login process. This feature ensures the
+            continuity of your session or extends your access to the app or
+            website. <br /> <br />
+
+            <b>Storage on the client-side:</b> To ensure accessibility for authorized
+            requests, it is recommended to securely store the access token in
+            the app or website's memory on the client-side. It is crucial,
+            however, to avoid storing refresh tokens on the client-side due to
+            their longer lifespan and the associated security risks. Instead,
+            refresh tokens should be securely stored on the server-side to
+            prevent unauthorized access.
           </p>
         </div>
 
         <div>
-          <h5>2. How to validate React props using PropTypes. </h5>
-          <div className="ps-4">
-            <p>React PropTypes validators: </p>
-            <p className="ps-4">
-              <li>PropTypes.any: The prop can be of any data type.</li>
-              <li>PropTypes.bool : The prop should be a Boolean. </li>
-              <li>PropTypes.number: The prop should be a number. </li>
-              <li>PropTypes.string : The prop should be a string.</li>
-              <li>PropTypes.func : The prop should be a function.</li>
-              <li>PropTypes.array : The prop should be an array.</li>
-            </p>
-          </div>
+          <h5>2. Compare SQL and NoSQL databases? </h5> <br />
+
+          <p className="ps-4">
+            <h6><b className="text-decoration-underline">SQL Databases:</b></h6> 
+            <b>Structure:</b> SQL databases use a structured schema, meaning data is
+            organized into tables with predefined columns and rows. <br />{" "}
+            <br />
+            <b>Relationships:</b> SQL databases are great for managing relationships
+            between different tables through keys, ensuring data integrity and
+            consistency. <br /> <br />
+            <b>Query Language:</b> They use Structured Query Language (SQL) to interact
+            with the data, allowing for powerful querying and complex
+            operations.
+            <br /> <br />
+            <b>Scalability:</b> SQL databases generally scale vertically by increasing
+            the hardware resources of a single server. <br /> <br /> <br />
+
+            <h6><b className="text-decoration-underline">NoSQL Databases:</b></h6> 
+            <b>Structure:</b> NoSQL databases are schema-less, meaning they can store
+            unstructured and semi-structured data without a predefined schema.{" "}
+            <br /> <br />
+            <b>Flexibility:</b> They provide flexibility in storing and handling
+            various types of data, such as documents, key-value pairs, graphs,
+            and more. <br /> <br />
+            <b>Scalability:</b> NoSQL databases are designed to scale horizontally by
+            adding more servers to distribute the data and workload. <br />{" "}
+            <br />
+            <b>Querying:</b> NoSQL databases often have simpler query capabilities
+            compared to SQL databases, with a focus on high-performance
+            retrieval of specific data.{" "}
+          </p>
         </div>
 
         <div>
-          <h5>3. Tell us the difference between nodejs and express js.</h5>
+          <h5>3. What is express js? What is Next JS?</h5>
           <p className="ps-4">
-            NodeJS is the package that provides the JavaScript run-time
-            environment.On the other hand, Express js is a framework that works on top of
-            NodeJS and helps users to handle requests and responses.
+            <b>Express.js</b> is a web application framework for Node.js that
+            simplifies the process of building web applications and APIs. It
+            provides a set of tools and features to handle routing, middleware,
+            and request/response handling. Express.js allows developers to
+            create server-side applications efficiently and easily manage routes
+            and handle HTTP requests and responses. <br /> <br />
+            <b>Next.js</b> , on the other hand, is a framework built on top of React.js that enables server-side
+            rendering (SSR) and static site generation (SSG) for React
+            applications. It provides a powerful development environment with
+            features like automatic code splitting, routing, and server-side
+            rendering, allowing developers to build fast and optimized web
+            applications. Next.js simplifies the process of building React
+            applications by providing a framework that takes care of routing and
+            server-side rendering, making it easier to create performant and
+            SEO-friendly websites. <br /> <br />
+            In simple terms, Express.js is a framework for building server-side applications and APIs using Node.js, while Next.js is a framework that extends React.js and provides additional
+            features like server-side rendering and routing to create fast and
+            optimized web applications.
           </p>
         </div>
 
         <div>
-          <h5>
-            4. What is a custom hook, and why will you create a custom hook?
-          </h5>
+          <h5>4. What is MongoDB aggregate and how does it work</h5>
           <p className="ps-4">
-            {" "}
-            In react, a custom hook is user-defined function that is prefixed
-            with the “use” keyword.
+          <b>MongoDB aggregate</b> is a powerful feature that allows you to perform advanced data processing operations on collections of documents in MongoDB. <br /> <br /> 
+          
+          It works by using a pipeline of stages, where each stage applies a specific operation to the input documents and passes the results to the next stage. This enables you to perform tasks like grouping, filtering, sorting, and transforming data in a flexible and efficient manner. Overall, MongoDB aggregate helps you analyze and summarize your data in meaningful ways.
           </p>
-          <p className="ps-4">
-            It can be reused easily, which makes the code cleaner and reduces
-            the time to write the code. It also enhances the rendering speed of
-            the code as a custom hook does not need to be rendered again and
-            again while rendering the whole code.
-          </p>
+          
         </div>
-      </div>
-      <div className="d-flex justify-content-center align-items-center gap-2 mt-5 ">
-        <span className="text-danger">Download or Print PDF: </span> 
-      
-        <ReactToPrint
-          trigger={() => <FaPrint className="print-icon" style={{width:"2rem", height:"2rem"}}></FaPrint> }
-          content={() => printRef.current}
-        />
       </div>
     </Container>
   );
 };
-
 
 export default Blog;

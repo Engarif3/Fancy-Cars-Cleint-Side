@@ -75,7 +75,7 @@ const Navigationbar = () => {
                   className="nav-link text-decoration-none text-black"
                   to={"/blog"}
                 >
-                  Blogs
+                  Blog
                 </NavLink>
               </Nav>
 
