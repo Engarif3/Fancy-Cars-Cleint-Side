@@ -11,6 +11,8 @@ import Swal from "sweetalert2";
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  const [editModalShow, setEditModalShow] = useState(false);
+  const [editedToy, setEditedToy] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:5000/myToy")
@@ -76,8 +78,9 @@ const MyToys = () => {
     });
   };
 
-  const [editModalShow, setEditModalShow] = useState(false);
-  const [editedToy, setEditedToy] = useState(null);
+ 
+
+ // Modal show
 
   const handleEditModalShow = (toy) => {
     setEditedToy(toy);
@@ -93,9 +96,9 @@ const MyToys = () => {
     <div>
       <div className="my-jobs-container">
         <h1 className="text-center p-4 ">My Toys</h1>
-        <div className="search-box p-2 text-center">
+        {/* <div className="search-box p-2 text-center">
           <input type="text" className="p-1" /> <button>Search</button>
-        </div>
+        </div> */}
         <Table striped bordered hover className="container">
           <thead>
             <tr>

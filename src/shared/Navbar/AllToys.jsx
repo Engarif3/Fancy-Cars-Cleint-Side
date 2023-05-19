@@ -11,7 +11,7 @@ import { Link, useParams } from "react-router-dom";
 const AllToys = () => {
   // const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
- 
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:5000/myToy")
@@ -21,13 +21,47 @@ const AllToys = () => {
       });
   }, []);
 
+  // handle search
+  
+const handleSearch = () => {
+  fetch(`http://localhost:5000/getToyByText/${searchText}`)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.length === 0) {
+        // No search results found
+        Swal.fire('No Search Results', 'No toys found matching your search.', 'info');
+      } else {
+        setToys(data);
+      }
+    })
+    .catch((error) => {
+      // Handle fetch error
+      console.error("Error occurred during search:", error);
+    });
+};
+
+  const handleShowAll =() =>{
+    fetch("http://localhost:5000/myToy")
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+      });
+  }
 
   return (
     <div>
       <div className="my-jobs-container">
-        <h1 className="text-center p-4 ">My Toys</h1>
-        <div className="search-box p-2 text-center">
-          <input type="text" className="p-1" /> <button>Search</button>
+        <h1 className="text-center p-4 ">All Toys</h1>
+        <div className="search-box p-2 text-center d-flex justify-content-center gap-2">
+          <input
+            onChange={(e) => setSearchText(e.target.value)}
+            type="text"
+            placeholder="Search by Toy name"
+            className="p-1"
+          />{" "}
+          {/* <input type="button" value="" > </input> */}
+          <Button variant="primary" onClick={handleSearch}>Search</Button>
+          <Button variant="primary" onClick={handleShowAll}>Show All</Button>
         </div>
         <Table striped bordered hover className="container">
           <thead>
@@ -57,22 +91,19 @@ const AllToys = () => {
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
                 <td>{toy.details}</td>
-              
+
                 <td>
-                <div className="d-flex justify-content-center">
-              <Link className="w-75 mb-2" to={`/allToys/${toy._id}`}>
-                <Button  variant="primary">
-                  View Details
-                </Button>
-              </Link>
-            </div>
+                  <div className="d-flex justify-content-center">
+                    <Link className="w-75 mb-2" to={`/allToys/${toy._id}`}>
+                      <Button variant="primary">View Details</Button>
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
       </div>
-  
     </div>
   );
 };
