@@ -48,11 +48,11 @@ const AddToy = () => {
                 title: 'Success!',
                 text: 'Toy Added Successfully',
                 icon: 'success',
-                confirmButtonText: 'Cool'
+                confirmButtonText: 'Ok'
               })
         }
     })
-    // console.log(newToy);
+   
   };
   return (
     <div>
@@ -100,7 +100,7 @@ const AddToy = () => {
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Price</Form.Label>
+                <Form.Label>Price ($)</Form.Label>
                 <Form.Control
                   type="text"
                   name="price"

@@ -106,7 +106,7 @@ const MyToys = () => {
               <th>Toy Name</th>
               <th>Seller Name</th>
               <th>Seller Email</th>
-              <th>Price</th>
+              <th>Price ($)</th>
               <th>Rating</th>
               <th>Quantity</th>
               <th>Category</th>

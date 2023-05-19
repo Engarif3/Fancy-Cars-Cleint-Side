@@ -34,9 +34,9 @@ const UpdateToyModal = (props) => {
           Update Toy Information
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="bg-light rounded">
         <form
-          className="container row row-cols-3 "
+          className="container row row-cols-3"
           onSubmit={handleSubmit((data) => {
             handleToyUpdate(data);
             props.onHide(); // Close the modal after submitting the form
@@ -50,6 +50,7 @@ const UpdateToyModal = (props) => {
             {...register("toyName")}
             placeholder="Toy Name"
             defaultValue={props?.toy?.toyName}
+            required
           />
           </div>
           
@@ -65,6 +66,7 @@ const UpdateToyModal = (props) => {
             {...register("sellerName")}
             placeholder="Seller Name"
             defaultValue={props?.toy?.sellerName}
+            required
           />
           </div>
          <div className="text-center">
@@ -83,6 +85,7 @@ const UpdateToyModal = (props) => {
             {...register("price")}
             placeholder="Price"
             defaultValue={props?.toy?.price}
+            required
           />
          </div>
          <div className="text-center">
@@ -101,6 +104,7 @@ const UpdateToyModal = (props) => {
             {...register("quantity")}
             placeholder="Quantity"
             defaultValue={props?.toy?.quantity}
+            required
           />
          </div>
          <div className="text-center">
@@ -139,14 +143,10 @@ const UpdateToyModal = (props) => {
           <br />
           <div className="d-flex justify-content-center w-100">
 
-          <input className="submit-btn mt-4 px-4 py-2 bg-primary rounded-2" value="Update Toy" type="submit" />
+          <input className="submit-btn mt-4 px-4 py-2 bg-primary rounded-2 text-white" value="Update Toy" type="submit" />
           </div>
         </form>
       </Modal.Body>
-      <Modal.Footer>
-        {/* <Button onClick={props.onHide}>Close</Button> */}
-        {/* <button className="bg-danger">Update</button> */}
-      </Modal.Footer>
     </Modal>
   );
 };
