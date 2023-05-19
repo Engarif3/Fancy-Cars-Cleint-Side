@@ -136,9 +136,9 @@ const AddToy = () => {
               // required
             >
               <option value="">Select a category</option>
-              <option value="Sports Cars">Sports Cars</option>
-              <option value="Trucks">Trucks</option>
-              <option value="Buses">Buses</option>
+              <option value="Sports Car">Sports Car</option>
+              <option value="Truck">Truck</option>
+              <option value="Bus">Bus</option>
             </Form.Select>
             <Form.Group
               className="mb-0"

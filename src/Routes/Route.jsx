@@ -12,6 +12,7 @@ import MyToys from "../shared/Navbar/MyToys";
 import ShopByCategory from "../Section/ShopByCategory";
 import AllToys from "../shared/Navbar/AllToys";
 import SingleToy from "../shared/Navbar/SingleToy";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Gallery></Gallery>,
-        // loader: () =>
-        //   fetch("https://assignment-server-engarif3.vercel.app/chefs"),
       },
       {
         path: "/login",
@@ -39,11 +38,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/addToy",
-        element: <AddToy></AddToy>,
+        element: <PrivateRoute>
+          <AddToy></AddToy>
+        </PrivateRoute>,
       },
       {
         path: "/myToys",
-        element: <MyToys></MyToys>,
+        element: <PrivateRoute>
+          <MyToys></MyToys>
+        </PrivateRoute>,
       },
       {
         path: "/allToys",
@@ -51,7 +54,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/allToys/:id",
-        element: <SingleToy></SingleToy>,
+        element: <PrivateRoute>
+          <SingleToy></SingleToy>
+        </PrivateRoute>,
         loader: ({ params }) =>fetch(`http://localhost:5000/myToy/${params.id}`),
       },
     ],

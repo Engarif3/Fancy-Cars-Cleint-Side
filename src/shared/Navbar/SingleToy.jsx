@@ -1,7 +1,9 @@
+import { Rating } from "@smastrom/react-rating";
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { FaRegThumbsUp } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import '@smastrom/react-rating/style.css'
 
 const SingleToy = () => {
   const { id } = useParams();
@@ -42,6 +44,12 @@ const SingleToy = () => {
         <p> <span className="fw-bold"><FaRegThumbsUp className="mb-1"></FaRegThumbsUp> :</span>  {toy.details}</p>
         <p><span className="fw-bold">Recipes :</span> {toy.sellerName}</p>
         <p><span className="fw-bold">Experience :</span> {toy.price} Years</p>
+
+        <div className="d-flex  align-items-center">
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; Rating:</p> 
+        <Rating style={{ maxWidth: 100 }} value={toy.rating}  readOnly className="pb-3" />
+        <p>{toy.rating}</p>
+        </div>
       </div>
       
       <div  height={400} offset={50} className="d-flex justify-content-center align-items-center mr-4" style={{height: '400px'}}>

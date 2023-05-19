@@ -3,10 +3,9 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { FaUserCircle } from "react-icons/fa";
+// import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
-// import logo from "../../assets/car-logo.png"
-import logo1 from "../../assets/car-logo1.png"
+import logo1 from "../../assets/car-logo1.png";
 
 const Navigationbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -40,12 +39,17 @@ const Navigationbar = () => {
             />
             <Navbar.Collapse id="responsive-navbar-nav">
               <div>
-              <img className="" style={{width:"80px"}} src={logo1} alt="" />
-              <h5 className="ms-5 text-danger fw-bold fst-italic mb-md-2 mb-lg-2">
-                Fancy-Cars
-              </h5>
+                <img
+                  className=""
+                  style={{ width: "80px" }}
+                  src={logo1}
+                  alt=""
+                />
+                <h5 className="ms-5 text-danger fw-bold fst-italic mb-md-2 mb-lg-2">
+                  Fancy-Cars
+                </h5>
               </div>
-              
+
               <Nav className="mx-auto d-flex align-items-center gap-md-4">
                 <NavLink
                   className="nav-link text-decoration-none text-black"
@@ -59,18 +63,24 @@ const Navigationbar = () => {
                 >
                   All Toys
                 </NavLink>
-                <NavLink
-                  className="nav-link text-decoration-none text-black"
-                  to={"/myToys"}
-                >
-                  My Toys
-                </NavLink>
-                <NavLink
-                  className="nav-link text-decoration-none text-black"
-                  to={"/addToy"}
-                >
-                  Add A Toy
-                </NavLink>
+                {user && (
+                  <NavLink
+                    className="nav-link text-decoration-none text-black"
+                    to={"/myToys"}
+                  >
+                    My Toys
+                  </NavLink>
+                )}
+
+                {user && (
+                  <NavLink
+                    className="nav-link text-decoration-none text-black"
+                    to={"/addToy"}
+                  >
+                    Add A Toy
+                  </NavLink>
+                )}
+
                 <NavLink
                   className="nav-link text-decoration-none text-black"
                   to={"/blog"}

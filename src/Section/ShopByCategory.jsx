@@ -22,6 +22,12 @@ const ShopByCategory = () => {
     return toys.filter((toy) => toy.selectedCategory === selectedCategory);
   };
 
+  // Filter out empty categories and categories that were not provided
+  const nonEmptyCategories = categories.filter(
+    (category) =>
+      category && filteredToys(category).length > 0
+  );
+
   return (
     <Container>
       <h3 className="display-1 text-center mb-4 ">
@@ -36,7 +42,7 @@ const ShopByCategory = () => {
             borderRadius: "10px",
           }}
         >
-          {categories.map((category, index) => (
+          {nonEmptyCategories.map((category, index) => (
             <Tab
               key={index}
               style={{ background: "white", borderRadius: "5px" }}
@@ -45,30 +51,28 @@ const ShopByCategory = () => {
             </Tab>
           ))}
         </TabList>
-        {categories.map((category, index) => (
+        {nonEmptyCategories.map((category, index) => (
           <TabPanel key={index} style={{ fontSize: "20px", margin: "20px" }}>
-            {filteredToys(category).map((toy, toyIndex) => {
-              return (
-                <div className="d-flex justify-content-between">
-                  <img src={toy.photo} alt="" className="img-fluid w-50" />
-                  <div className="d-flex justify-content-center align-items-center">
-                    <div>
-                      <p style={{ color: "green" }}>
-                        Toy Name: {toy.toyName}
-                        <br />
-                        Rating: {toy.rating}
-                        <br />
-                        Price: {toy.price}
-                        <br />
-                        Seller: {toy.sellerName}
-                        <br />
-                        Details: {toy.details}
-                      </p>
-                    </div>
+            {filteredToys(category).map((toy, toyIndex) => (
+              <div className="d-flex justify-content-between" key={toyIndex}>
+                <img src={toy.photo} alt="" className="img-fluid w-50" />
+                <div className="d-flex justify-content-center align-items-center">
+                  <div>
+                    <p style={{ color: "green" }}>
+                      Toy Name: {toy.toyName}
+                      <br />
+                      Rating: {toy.rating}
+                      <br />
+                      Price: {toy.price}
+                      <br />
+                      Seller: {toy.sellerName}
+                      <br />
+                      Details: {toy.details}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </TabPanel>
         ))}
       </Tabs>
