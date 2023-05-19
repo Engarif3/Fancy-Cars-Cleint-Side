@@ -57,7 +57,7 @@ const handleSearch = () => {
             onChange={(e) => setSearchText(e.target.value)}
             type="text"
             placeholder="Search by Toy name"
-            className="p-1"
+            className="p-1 rounded-2 text-center"
           />{" "}
           {/* <input type="button" value="" > </input> */}
           <Button variant="primary" onClick={handleSearch}>Search</Button>
