@@ -105,7 +105,7 @@ const AddToy = () => {
                   type="text"
                   name="price"
                   placeholder="Enter Price"
-                  required
+                  // required
                 />
               </Form.Group>
             </div>
@@ -125,7 +125,7 @@ const AddToy = () => {
                   type="text"
                   name="quantity"
                   placeholder="Enter Quantity"
-                  required
+                  // required
                 />
               </Form.Group>
             </div>
@@ -133,7 +133,7 @@ const AddToy = () => {
               aria-label="Default select example"
               onChange={handleCategoryChange}
               value={selectedCategory}
-              required
+              // required
             >
               <option value="">Select a category</option>
               <option value="Sports Cars">Sports Cars</option>

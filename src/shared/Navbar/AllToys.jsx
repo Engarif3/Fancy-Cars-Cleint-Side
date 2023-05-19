@@ -13,15 +13,13 @@ const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:5000/myToy")
-      .then((res) => res.json())
-      .then((data) => {
-        setToys(data);
-      });
-  }, []);
-
-  // handle search
+   useEffect(() => {
+     fetch("http://localhost:5000/myToy")
+       .then((res) => res.json())
+       .then((data) => {
+         setToys(data);
+       });
+   }, []);
   
 const handleSearch = () => {
   fetch(`http://localhost:5000/getToyByText/${searchText}`)
@@ -59,7 +57,6 @@ const handleSearch = () => {
             placeholder="Search by Toy name"
             className="p-1 rounded-2 text-center"
           />{" "}
-          {/* <input type="button" value="" > </input> */}
           <Button variant="primary" onClick={handleSearch}>Search</Button>
           <Button variant="primary" onClick={handleShowAll}>Show All</Button>
         </div>
@@ -74,7 +71,6 @@ const handleSearch = () => {
               <th>Rating</th>
               <th>Quantity</th>
               <th>Category</th>
-              {/* <th>Sub-Category</th> */}
               <th>Description</th>
               <th>Action</th>
             </tr>

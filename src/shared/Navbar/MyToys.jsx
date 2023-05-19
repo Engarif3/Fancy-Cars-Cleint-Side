@@ -96,9 +96,7 @@ const MyToys = () => {
     <div>
       <div className="my-jobs-container">
         <h1 className="text-center p-4 ">My Toys</h1>
-        {/* <div className="search-box p-2 text-center">
-          <input type="text" className="p-1" /> <button>Search</button>
-        </div> */}
+        
         <Table striped bordered hover className="container">
           <thead>
             <tr>
