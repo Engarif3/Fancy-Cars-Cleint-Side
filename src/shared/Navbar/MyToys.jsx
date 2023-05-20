@@ -1,18 +1,17 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
-import { useState } from "react";
-import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { AuthContext } from "../../Provider/AuthProvider";
 import UpdateToyModal from "./UpdateToyModal";
 import Swal from "sweetalert2";
+import { Container } from "react-bootstrap";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [editModalShow, setEditModalShow] = useState(false);
   const [editedToy, setEditedToy] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     fetch("http://localhost:5000/myToy")
@@ -78,10 +77,28 @@ const MyToys = () => {
     });
   };
 
- 
+  const handleSortToggle = () => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newSortOrder);
+    setToys((prevToys) => [...prevToys].sort(compareByPrice(newSortOrder)));
+  };
 
- // Modal show
+  const compareByPrice = (order) => {
+    return function (a, b) {
+      const priceA = typeof a.price === "string" ? parseFloat(a.price) : a.price;
+      const priceB = typeof b.price === "string" ? parseFloat(b.price) : b.price;
 
+      if (priceA < priceB) {
+        return order === "asc" ? -1 : 1;
+      }
+      if (priceA > priceB) {
+        return order === "asc" ? 1 : -1;
+      }
+      return 0;
+    };
+  };
+
+  // Modal show
   const handleEditModalShow = (toy) => {
     setEditedToy(toy);
     setEditModalShow(true);
@@ -93,10 +110,17 @@ const MyToys = () => {
   };
 
   return (
-    <div>
+    <Container>
       <div className="my-jobs-container">
-        <h1 className="text-center p-4 ">My Toys</h1>
-        
+        <h1 className="text-center p-4">My Toys</h1>
+        <div className="p-2 text-center d-flex justify-content-end align-items-center gap-2">
+          
+          <div className="fw-bold">Sort Price:</div> <Button variant="dark" onClick={handleSortToggle}>
+                  {sortOrder === "asc" ? "High to Low" : "Low to High"}
+                </Button>
+    
+        </div>
+
         <Table striped bordered hover className="container">
           <thead>
             <tr>
@@ -104,11 +128,12 @@ const MyToys = () => {
               <th>Toy Name</th>
               <th>Seller Name</th>
               <th>Seller Email</th>
-              <th>Price ($)</th>
+              <th>
+                Price ($)
+              </th>
               <th>Rating</th>
               <th>Quantity</th>
               <th>Category</th>
-              {/* <th>Sub-Category</th> */}
               <th>Description</th>
               <th>Edit</th>
               <th>Action</th>
@@ -125,18 +150,22 @@ const MyToys = () => {
                 <td>{toy.rating}</td>
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
-                {/* <td>{toy.selectedSubcategory}</td> */}
                 <td>{toy.details}</td>
                 <td>
                   <Button
                     variant="primary"
                     onClick={() => handleEditModalShow(toy)}
                   >
-                    Edit
+                    Update
                   </Button>
                 </td>
                 <td>
-                  <Button variant="danger" onClick={() => handleDelete(toy._id)}>Delete</Button>
+                  <Button
+                    variant="danger"
+                    onClick={() => handleDelete(toy._id)}
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -151,7 +180,7 @@ const MyToys = () => {
           handleToyUpdate={handleToyUpdate}
         />
       )}
-    </div>
+    </Container>
   );
 };
 
