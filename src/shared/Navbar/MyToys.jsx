@@ -14,17 +14,8 @@ const MyToys = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/myToy")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const sortedData = data.sort(compareByPrice(sortOrder));
-  //       setToys(sortedData);
-  //     });
-  // }, [sortOrder]);
-
   useEffect(() => {
-    const userEmail = user.email; // Replace with the actual logged-in user email ID
+    const userEmail = user.email; 
   
     fetch(`http://localhost:5000/myToy?userId=${userEmail}`)
       .then((res) => res.json())
