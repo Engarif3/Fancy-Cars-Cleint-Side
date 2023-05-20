@@ -8,9 +8,18 @@ import img3 from "../assets/sm-3.png";
 import img4 from "../assets/sm-4.png";
 import img5 from "../assets/sm-5.png";
 import img6 from "../assets/sm-6.png";
+import Section1 from '../Section/Section1';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const Gallery = () => {
 
+    useEffect(() => {
+        AOS.init({
+          // Configuration options
+        });
+      }, []);
     
     return (
         <div>
@@ -22,10 +31,11 @@ const Gallery = () => {
             Fancy Cars Gallery 
             </strong>
         </h3>
-        <div className="row">
+        <div className="row" >
             <div className="col-sm-12 col-md-6 col-lg-4">
                 <img
                     className="img-fluid  shadow rounded mb-0 h-75 w-100"
+                    data-aos="zoom-in" data-aos-duration="5000"
                     src={img1}
                     alt="..."
                 />
@@ -34,6 +44,7 @@ const Gallery = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
                 <img
                     className="img-fluid shadow rounded  h-75 w-100"
+                    data-aos="zoom-in" data-aos-duration="5000"
                     src={img2}
                     alt="..."
                 />
@@ -42,6 +53,7 @@ const Gallery = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
                 <img
                     className="img-fluid shadow rounded  h-75 w-100"
+                    data-aos="zoom-in" data-aos-duration="5000"
                     src={img3}
                     alt="..."
                 />
@@ -50,6 +62,7 @@ const Gallery = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
                 <img
                     className="img-fluid shadow rounded  h-75 w-100"
+                    data-aos="zoom-in" data-aos-duration="5000"
                     src={img4}
                     alt="..."
                 />
@@ -58,6 +71,7 @@ const Gallery = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
                 <img
                     className="img-fluid shadow rounded  h-75 w-100"
+                    data-aos="zoom-in" data-aos-duration="5000"
                     src={img5}
                     alt="..."
                 />
@@ -66,6 +80,7 @@ const Gallery = () => {
             <div className="col-sm-12 col-md-6 col-lg-4">
                 <img
                     className="img-fluid shadow rounded  h-75 w-100"
+                    data-aos="zoom-in" data-aos-duration="5000"
                     src={img6}
                     alt="..."
                 />
@@ -75,9 +90,8 @@ const Gallery = () => {
     </div>
        
         </div>
-        {/* old */}
         <ShopByCategory></ShopByCategory>
-        {/* <Section3></Section3> */}
+        <Section1></Section1>
         <Section2></Section2>
         </div>
         
