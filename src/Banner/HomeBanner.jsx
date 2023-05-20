@@ -15,7 +15,7 @@ const HomeBanner = () => {
               src={img1}
               alt="Second slide"
             />
-            <div className="text-black w-50 p-5 d-flex justify-content-center align-items-center ">
+            <div className="bg-white w-50 p-5 d-flex justify-content-center align-items-center ">
               <div className="fst-italic">
                 <h1 className="text-primary">Accelerate the Fun with......</h1>
                 <h2 className="ms-5 text-warning">
@@ -32,7 +32,7 @@ const HomeBanner = () => {
               src={img2}
               alt="Second slide"
             />
-             <div className="text-black w-50 p-5 d-flex justify-content-center align-items-center ">
+             <div className="bg-white w-50 p-5 d-flex justify-content-center align-items-center ">
               <div className="fst-italic">
                 <h1 className="text-primary">Fueling Excitement with ......</h1>
                 <h2 className="ms-5 text-warning">
@@ -50,7 +50,7 @@ const HomeBanner = () => {
               src={img3}
               alt="Second slide"
             />
-            <div className="text-black w-50 p-5 d-flex justify-content-center align-items-center ">
+            <div className="bg-white w-50 p-5 d-flex justify-content-center align-items-center ">
               <div className="fst-italic">
                 <h1 className="text-primary">Unleash the Joyride......</h1>
                 <h2 className="ms-5 text-warning">

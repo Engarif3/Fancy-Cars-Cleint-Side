@@ -28,9 +28,9 @@ const Navigationbar = () => {
         <Navbar
           collapseOnSelect
           expand="lg"
-          // bg="black"
-          variant="light"
-          style={{ position: "relative", top: 0 }}
+          className="shadow-lg"
+          variant=""
+          style={{ position: "relative", top: 0, backgroundColor:"#142c64" }}
         >
           <Container>
             <Navbar.Toggle
@@ -52,20 +52,20 @@ const Navigationbar = () => {
 
               <Nav className="mx-auto d-flex align-items-center gap-md-4">
                 <NavLink
-                  className="nav-link text-decoration-none text-black"
+                  className="nav-link text-decoration-none text-white"
                   to={"/"}
                 >
                   Home
                 </NavLink>
                 <NavLink
-                  className="nav-link text-decoration-none text-black"
+                  className="nav-link text-decoration-none text-white"
                   to={"/allToys"}
                 >
                   All Toys
                 </NavLink>
                 {user && (
                   <NavLink
-                    className="nav-link text-decoration-none text-black"
+                    className="nav-link text-decoration-none text-white"
                     to={"/myToys"}
                   >
                     My Toys
@@ -74,7 +74,7 @@ const Navigationbar = () => {
 
                 {user && (
                   <NavLink
-                    className="nav-link text-decoration-none text-black"
+                    className="nav-link text-decoration-none text-white"
                     to={"/addToy"}
                   >
                     Add A Toy
@@ -82,7 +82,7 @@ const Navigationbar = () => {
                 )}
 
                 <NavLink
-                  className="nav-link text-decoration-none text-black"
+                  className="nav-link text-decoration-none text-white"
                   to={"/blog"}
                 >
                   Blog
@@ -115,7 +115,7 @@ const Navigationbar = () => {
                 )}
 
                 {user ? (
-                  <Button variant="primary" onClick={handleLogOut}>
+                  <Button  variant="secondary" onClick={handleLogOut}>
                     Logout
                   </Button>
                 ) : (
@@ -127,6 +127,7 @@ const Navigationbar = () => {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        
       </div>
       <style>
         {`
