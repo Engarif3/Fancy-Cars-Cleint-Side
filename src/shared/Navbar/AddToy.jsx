@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AddToy = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const handleCategoryChange = (event) => {
@@ -84,8 +86,9 @@ const AddToy = () => {
                 <Form.Control
                   type="text"
                   name="name"
-                  placeholder="dynamic name"
-                  //   required
+                  placeholder={user.displayName}
+                  defaultValue={user.displayName}
+                  readOnly
                 />
               </Form.Group>
             </div>
@@ -95,8 +98,9 @@ const AddToy = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder="dynamic email address"
-                  //   required
+                  placeholder={user.email}
+                  defaultValue={user.email}
+                  readOnly
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
