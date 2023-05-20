@@ -10,7 +10,7 @@ const SingleToy = () => {
   const [toy, setToy] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myToy/${id}`)
+    fetch(`https://fancy-car.vercel.app/myToy/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setToy(data);

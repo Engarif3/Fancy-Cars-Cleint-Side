@@ -10,4 +10,4 @@
 * The whole project is built with react js.
 
 #### Click below for the project live link:
-[Project Live Link](https://chef-recipe-hunter-1e9cd.web.app/)
+[Project Live Link](https://fancy-cars-ba5f3.web.app/)

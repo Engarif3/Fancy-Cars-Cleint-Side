@@ -14,7 +14,7 @@ const AllToys = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://fancy-car.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
@@ -38,7 +38,7 @@ const AllToys = () => {
   };
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getToyByText/${searchText}`)
+    fetch(`https://fancy-car.vercel.app/getToyByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length === 0) {
@@ -55,7 +55,7 @@ const AllToys = () => {
   };
 
   const handleShowAll = () => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://fancy-car.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);

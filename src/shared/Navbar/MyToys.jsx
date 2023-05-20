@@ -17,7 +17,7 @@ const MyToys = () => {
   useEffect(() => {
     const userEmail = user.email; 
   
-    fetch(`http://localhost:5000/myToy?userId=${userEmail}`)
+    fetch(`https://fancy-car.vercel.app/myToy?userId=${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
         const sortedData = data.sort(compareByPrice(sortOrder));
@@ -28,7 +28,7 @@ const MyToys = () => {
   
 
   const handleToyUpdate = (data) => {
-    fetch(`http://localhost:5000/updateToy/${data._id}`, {
+    fetch(`https://fancy-car.vercel.app/updateToy/${data._id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -63,7 +63,7 @@ const MyToys = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myToy/${id}`, {
+        fetch(`https://fancy-car.vercel.app/myToy/${id}`, {
           method: 'DELETE',
         })
           .then((res) => res.json())
