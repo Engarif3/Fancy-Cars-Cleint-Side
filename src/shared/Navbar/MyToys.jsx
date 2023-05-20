@@ -12,15 +12,29 @@ const MyToys = () => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [editedToy, setEditedToy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
+  
+
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/myToy")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const sortedData = data.sort(compareByPrice(sortOrder));
+  //       setToys(sortedData);
+  //     });
+  // }, [sortOrder]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/myToy")
+    const userEmail = user.email; // Replace with the actual logged-in user email ID
+  
+    fetch(`http://localhost:5000/myToy?userId=${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
         const sortedData = data.sort(compareByPrice(sortOrder));
         setToys(sortedData);
       });
   }, [sortOrder]);
+  
+  
 
   const handleToyUpdate = (data) => {
     fetch(`http://localhost:5000/updateToy/${data._id}`, {

@@ -110,7 +110,7 @@ const AddToy = () => {
                 <Form.Control
                   type="text"
                   name="toyName"
-                  placeholder="Enter your name"
+                  placeholder="Enter Toy name"
                   required
                 />
               </Form.Group>
@@ -119,7 +119,7 @@ const AddToy = () => {
                 <Form.Control
                   type="text"
                   name="name"
-                  placeholder={user.displayName}
+                  placeholder="Enter your name"
                   defaultValue={user.displayName}
                   readOnly
                 />
@@ -131,7 +131,7 @@ const AddToy = () => {
                 <Form.Control
                   type="email"
                   name="email"
-                  placeholder={user.email}
+                  placeholder="Enter your name"
                   defaultValue={user.email}
                   readOnly
                 />

@@ -4,14 +4,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
 
    useEffect(() => {
-     fetch("http://localhost:5000/myToy")
+     fetch("http://localhost:5000/allToys")
        .then((res) => res.json())
        .then((data) => {
          setToys(data);
@@ -24,7 +24,7 @@ const handleSearch = () => {
     .then((data) => {
       if (data.length === 0) {
         // No search results found
-        Swal.fire('No Search Results', 'No toys found matching your search.', 'info');
+        Swal.fire('No Search Results', 'No toys found', 'info');
       } else {
         setToys(data);
       }
@@ -36,7 +36,7 @@ const handleSearch = () => {
 };
 
   const handleShowAll =() =>{
-    fetch("http://localhost:5000/myToy")
+    fetch("http://localhost:5000/allToys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
