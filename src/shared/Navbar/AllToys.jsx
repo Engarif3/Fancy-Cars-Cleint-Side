@@ -1,15 +1,12 @@
 import React from "react";
-import { useContext } from "react";
 import Table from "react-bootstrap/Table";
 import { useState } from "react";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
-// import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useParams } from "react-router-dom";
 
 const AllToys = () => {
-  // const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
 

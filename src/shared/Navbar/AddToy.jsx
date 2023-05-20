@@ -18,10 +18,43 @@ const AddToy = () => {
     const toyName = form.toyName.value;
     const sellerName = form.name.value;
     const sellerEmail = form.email.value;
-    const price = form.price.value;
-    const rating = form.rating.value;
-    const quantity = form.quantity.value;
+    const price = parseFloat(form.price.value);
+    const rating = parseFloat(form.rating.value);
+    const quantity = form.quantity.value.trim();
     const details = form.details.value;
+
+  // price input field validation
+    if (isNaN(price) || price < 0 || Object.is(price, -0)) {
+      Swal.fire({
+        title: 'Invalid Price Input',
+        text: 'Please enter a valid price.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      return;
+    }
+ // rating input field validation
+    if (isNaN(rating) || rating < 0 || rating > 5 || Object.is(rating, -0)) {
+      Swal.fire({
+        title: 'Invalid Rating Input',
+        text: 'Please enter a valid rating between 0 and 5.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
+      return;
+    }
+
+  // Check if the quantity is a valid positive integer
+  const quantityRegex = /^[1-9]\d*$/; 
+  if (!quantityRegex.test(quantity)) {
+    Swal.fire({
+      title: 'Invalid Quantity Input',
+      text: 'Please enter a valid positive and integer quantity.',
+      icon: 'error',
+      confirmButtonText: 'Ok'
+    });
+    return;
+  }
 
     const newToy = {
       photo,
