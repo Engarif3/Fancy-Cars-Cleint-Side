@@ -1,47 +1,66 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import Table from "react-bootstrap/Table";
 import { useState } from "react";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const AllToys = () => {
+  const linkRef = useRef(null);
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-   useEffect(() => {
-     fetch("http://localhost:5000/allToys")
-       .then((res) => res.json())
-       .then((data) => {
-         setToys(data);
-       });
-   }, []);
-  
-const handleSearch = () => {
-  fetch(`http://localhost:5000/getToyByText/${searchText}`)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.length === 0) {
-        // No search results found
-        Swal.fire('No Search Results', 'No toys found', 'info');
-      } else {
-        setToys(data);
-      }
-    })
-    .catch((error) => {
-      // Handle fetch error
-      console.error("Error occurred during search:", error);
-    });
-};
-
-  const handleShowAll =() =>{
+  useEffect(() => {
     fetch("http://localhost:5000/allToys")
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
       });
-  }
+  }, []);
+
+  const handleButtonClick = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Please login first to view details",
+        icon: "warning",
+        confirmButtonText: "OK",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          linkRef.current.click();
+        }
+      });
+    } else {
+      linkRef.current.click();
+    }
+  };
+
+  const handleSearch = () => {
+    fetch(`http://localhost:5000/getToyByText/${searchText}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.length === 0) {
+          // No search results found
+          Swal.fire("No Search Results", "No toys found", "info");
+        } else {
+          setToys(data);
+        }
+      })
+      .catch((error) => {
+        // Handle fetch error
+        console.error("Error occurred during search:", error);
+      });
+  };
+
+  const handleShowAll = () => {
+    fetch("http://localhost:5000/allToys")
+      .then((res) => res.json())
+      .then((data) => {
+        setToys(data);
+      });
+  };
 
   return (
     <div>
@@ -54,8 +73,12 @@ const handleSearch = () => {
             placeholder="Search by Toy name"
             className="p-1 rounded-2 text-center"
           />{" "}
-          <Button variant="primary" onClick={handleSearch}>Search</Button>
-          <Button variant="primary" onClick={handleShowAll}>Show All</Button>
+          <Button variant="primary" onClick={handleSearch}>
+            Search
+          </Button>
+          <Button variant="primary" onClick={handleShowAll}>
+            Show All
+          </Button>
         </div>
         <Table striped bordered hover className="container">
           <thead>
@@ -87,9 +110,14 @@ const handleSearch = () => {
 
                 <td>
                   <div className="d-flex justify-content-center">
-                    <Link className="w-75 mb-2" to={`/allToys/${toy._id}`}>
-                      <Button variant="primary">View Details</Button>
-                    </Link>
+                    <div className="w-75 mb-2">
+                      <Link
+                        ref={linkRef}
+                        to={`/allToys/${toy._id}`}
+                        style={{ display: "none" }}
+                      ></Link>
+                      <Button onClick={handleButtonClick}>View Details</Button>
+                    </div>
                   </div>
                 </td>
               </tr>

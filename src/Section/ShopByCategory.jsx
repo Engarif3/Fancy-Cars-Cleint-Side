@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Button, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const ShopByCategory = () => {
+  const linkRef = useRef(null);
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
@@ -13,6 +18,22 @@ const ShopByCategory = () => {
         setToys(data);
       });
   }, []);
+
+  const handleButtonClick = () => {
+    if (!user) {
+      Swal.fire({
+        title: "Please login first to view details",
+        icon: "warning",
+        confirmButtonText: "OK",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          linkRef.current.click();
+        }
+      });
+    } else {
+      linkRef.current.click();
+    }
+  };
 
   // Extract unique categories from toys
   const categories = [...new Set(toys.map((toy) => toy.selectedCategory))];
@@ -57,6 +78,18 @@ const ShopByCategory = () => {
                 <img src={toy.photo} alt="" className="img-fluid w-50" />
                 <div className="d-flex justify-content-center align-items-center">
                   <div>
+                    <div className="d-flex justify-content-center">
+                      <div className="w-75 mb-2">
+                        <Link
+                          ref={linkRef}
+                          to={`/allToys/${toy._id}`}
+                          style={{ display: "none" }}
+                        ></Link>
+                        <Button onClick={handleButtonClick}>
+                          View Details
+                        </Button>
+                      </div>
+                    </div>
                     <p style={{ color: "green" }}>
                       Toy Name: {toy.toyName}
                       <br />
