@@ -17,9 +17,10 @@ const MyToys = () => {
     fetch("http://localhost:5000/myToy")
       .then((res) => res.json())
       .then((data) => {
-        setToys(data);
+        const sortedData = data.sort(compareByPrice(sortOrder));
+        setToys(sortedData);
       });
-  }, []);
+  }, [sortOrder]);
 
   const handleToyUpdate = (data) => {
     fetch(`http://localhost:5000/updateToy/${data._id}`, {
@@ -80,7 +81,6 @@ const MyToys = () => {
   const handleSortToggle = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newSortOrder);
-    setToys((prevToys) => [...prevToys].sort(compareByPrice(newSortOrder)));
   };
 
   const compareByPrice = (order) => {
