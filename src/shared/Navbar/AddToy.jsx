@@ -144,7 +144,7 @@ const AddToy = () => {
                   type="text"
                   name="price"
                   placeholder="Enter Price"
-                  // required
+                  required
                 />
               </Form.Group>
             </div>
@@ -154,7 +154,7 @@ const AddToy = () => {
                 <Form.Control
                   type="text"
                   name="rating"
-                  placeholder="Enter Price"
+                  placeholder="Enter Rating"
                   // required
                 />
               </Form.Group>
@@ -172,7 +172,7 @@ const AddToy = () => {
               aria-label="Default select example"
               onChange={handleCategoryChange}
               value={selectedCategory}
-              // required
+              required
             >
               <option value="">Select a category</option>
               <option value="Sports Car">Sports Car</option>
