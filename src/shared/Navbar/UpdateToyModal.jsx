@@ -122,7 +122,8 @@ const UpdateToyModal = (props) => {
             className="text-input px-4  py-1"
             {...register("selectedCategory")}
             onChange={handleCategoryChange} 
-            value={watch("selectedCategory")} 
+            value={watch("selectedCategory")}
+            defaultValue={props?.toy?.selectedCategory} 
           >
             <option value="">Select a category</option>
             <option value="Sports Car">Sports Car</option>

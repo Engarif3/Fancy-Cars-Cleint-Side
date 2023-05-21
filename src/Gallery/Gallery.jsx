@@ -12,6 +12,8 @@ import Section1 from '../Section/Section1';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import Section3 from '../Section/Section3';
+
 
 const Gallery = () => {
 
@@ -92,6 +94,7 @@ const Gallery = () => {
         </div>
         <ShopByCategory></ShopByCategory>
         <Section1></Section1>
+        <Section3></Section3>
         <div className='mt-5 mb-5'></div>
         <Section2></Section2>
         </div>
