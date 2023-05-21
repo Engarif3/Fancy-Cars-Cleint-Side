@@ -92,6 +92,7 @@ const Gallery = () => {
         </div>
         <ShopByCategory></ShopByCategory>
         <Section1></Section1>
+        <div className='mt-5 mb-5'></div>
         <Section2></Section2>
         </div>
         

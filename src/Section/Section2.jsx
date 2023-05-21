@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Container, Form } from "react-bootstrap";
-import image from "../assets/sn-2.png";
+import image from "../assets/toy.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,8 +12,8 @@ const Section2 = () => {
     event.target.reset();
   };
   return (
-    <Container className=" border rounded-4 mt-5">
-      <h2 className="text-center mt-4 fst-italic">
+    <Container className="mt-5">
+      <h2 className="text-center mt-5 fst-italic">
         Your Opinion Matters. We will get back to you.
       </h2>
       <div className="d-md-flex d-lg-flex justify-content-center align-items-center">

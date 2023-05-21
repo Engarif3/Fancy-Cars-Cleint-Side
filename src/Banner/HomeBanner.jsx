@@ -6,7 +6,7 @@ import { Carousel } from "react-bootstrap";
 
 const HomeBanner = () => {
   return (
-    <div className="mt-4">
+    <div className="my-5">
       <Carousel>
         <Carousel.Item interval={2000}>
           <div className="d-flex" style={{ height: "500px" }}>

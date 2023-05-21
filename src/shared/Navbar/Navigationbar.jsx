@@ -115,12 +115,12 @@ const Navigationbar = () => {
                 )}
 
                 {user ? (
-                  <Button  variant="secondary" onClick={handleLogOut}>
+                  <Button  variant="danger" onClick={handleLogOut}>
                     Logout
                   </Button>
                 ) : (
                   <Link to={"/login"}>
-                    <Button variant="primary">Login</Button>
+                    <Button variant="danger">Login</Button>
                   </Link>
                 )}
               </Nav>
