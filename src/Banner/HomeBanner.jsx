@@ -4,8 +4,10 @@ import img2 from "../assets/sm-1.jpg";
 import img3 from "../assets/sm-3.png";
 import { Carousel } from "react-bootstrap";
 import "./HomeBanner.css"; // Import the CSS file
+import useTitle from "../Hooks/useTitle";
 
 const HomeBanner = () => {
+  useTitle("Home")
   return (
     <div className="my-5 banner-container" >
       <style>
