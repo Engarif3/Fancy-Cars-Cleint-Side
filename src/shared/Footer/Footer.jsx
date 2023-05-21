@@ -6,7 +6,7 @@ import logo1 from "../../assets/car-logo1.png";
 const Footer = () => {
   return (
     <div>
-      <div className="d-flex gap-4 align-items-center justify-content-between">
+      <div className="d-flex align-items-center justify-content-between ">
         <div className="d-flex justify-content-center align-items-center gap-2">
         <div className="mb-4">
           <img style={{ width: "80px" }} src={logo1} alt="" />

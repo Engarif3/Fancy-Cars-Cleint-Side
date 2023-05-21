@@ -28,9 +28,9 @@ const Navigationbar = () => {
         <Navbar
           collapseOnSelect
           expand="lg"
-          className="shadow-lg"
+          // className="shadow-lg"
           variant=""
-          style={{ position: "relative", top: 0, backgroundColor:"#142c64" }}
+          style={{ position: "relative", top: 0, backgroundColor:"#142c64",boxShadow: '0px 8px 2px rgba(0, 0, 0, 0.45)' }}
         >
           <Container>
             <Navbar.Toggle
