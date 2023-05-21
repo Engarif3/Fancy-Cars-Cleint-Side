@@ -126,7 +126,7 @@ const MyToys = () => {
           </Button>
         </div>
 
-        <Table striped bordered hover className="container">
+        <Table striped bordered hover className="container text-center">
           <thead>
             <tr>
               <th>#</th>
@@ -153,7 +153,7 @@ const MyToys = () => {
                 <td>{toy.rating}</td>
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
-                <td>{toy.details}</td>
+                <td className="text-start">{toy.details}</td>
                 <td>
                   <Button
                     variant="primary"

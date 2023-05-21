@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const ShopByCategory = () => {
-  const linkRef = useRef(null);
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
 
@@ -19,7 +20,7 @@ const ShopByCategory = () => {
       });
   }, []);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (toyId) => {
     if (!user) {
       Swal.fire({
         title: "Please login first to view details",
@@ -27,11 +28,11 @@ const ShopByCategory = () => {
         confirmButtonText: "OK",
       }).then((result) => {
         if (result.isConfirmed) {
-          linkRef.current.click();
+          // You can perform any desired action here when the user is not logged in
         }
       });
     } else {
-      linkRef.current.click();
+      // You can perform any desired action here when the user is logged in
     }
   };
 
@@ -74,36 +75,51 @@ const ShopByCategory = () => {
         {nonEmptyCategories.map((category, index) => (
           <TabPanel key={index} style={{ fontSize: "20px", margin: "20px" }}>
             {filteredToys(category).map((toy, toyIndex) => (
-              <div className="d-flex justify-content-between" key={toyIndex}>
-                <img src={toy.photo} alt="" className="img-fluid w-50" />
-                <div className="d-flex justify-content-center align-items-center">
-                  <div>
-                    <div className="d-flex justify-content-center">
-                      <div className="w-75 mb-2">
-                        <Link
-                          ref={linkRef}
-                          to={`/allToys/${toy._id}`}
-                          style={{ display: "none" }}
-                        ></Link>
-                        <Button onClick={handleButtonClick}>
-                          View Details
-                        </Button>
+              <Container key={toyIndex}>
+                <div className="d-md-flex d-lg-flex justify-content-between mb-2 w-100">
+                  <img
+                    src={toy.photo}
+                    alt=""
+                    className="img-fluid w-75 rounded-2 p-2"
+                  />
+
+                  <div className=" w-100">
+                    <div>
+                      <div>
+                        <div className="p-5" style={{ color: "black" }}>
+                          <h4 className="fw-bold">{toy.toyName}</h4>
+
+                          <div className="d-flex justify-content-start  align-items-center m-0">
+                            <p className="fw-bold">Rating:</p>
+                            <Rating
+                              style={{ maxWidth: 100 }}
+                              value={toy.rating}
+                              readOnly
+                              className="pb-3"
+                            />{" "}
+                            &nbsp;
+                            <p>{toy.rating}</p>
+                          </div>
+                          <span className="fw-bold">Price:</span> $ {toy.price}
+                          <br />
+                          {toy.details}
+                          <div className="d-flex justify-content-center">
+                            <div className="w-100 mt-2">
+                              <Link to={`/allToys/${toy._id}`}>
+                                <Button
+                                  onClick={() => handleButtonClick(toy._id)}
+                                >
+                                  View Details
+                                </Button>
+                              </Link>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <p style={{ color: "black" }}>
-                      Toy Name: {toy.toyName}
-                      <br />
-                      Rating: {toy.rating}
-                      <br />
-                      Price: {toy.price}
-                      <br />
-                      Seller: {toy.sellerName}
-                      <br />
-                      Details: {toy.details}
-                    </p>
                   </div>
                 </div>
-              </div>
+              </Container>
             ))}
           </TabPanel>
         ))}

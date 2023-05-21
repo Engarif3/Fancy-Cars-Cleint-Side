@@ -82,7 +82,7 @@ const AllToys = () => {
             Show All
           </Button>
         </div>
-        <Table striped bordered hover className="container">
+        <Table striped bordered hover className="container text-center">
           <thead>
             <tr>
               <th>#</th>
@@ -97,7 +97,7 @@ const AllToys = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             {toys?.map((toy, index) => (
               <tr key={toy._id}>
                 <td>{index + 1}</td>
@@ -108,19 +108,22 @@ const AllToys = () => {
                 <td>{toy.rating}</td>
                 <td>{toy.quantity}</td>
                 <td>{toy.selectedCategory}</td>
-                <td>{toy.details}</td>
+                <td className="text-start">{toy.details}</td>
 
-                <td>
-                  <div className="d-flex justify-content-center">
-                    <div className="w-75 mb-2">
+                <td >
+                  
+                    <div >
                       <Link
+                      
                         ref={linkRef}
                         to={`/allToys/${toy._id}`}
-                        style={{ display: "none" }}
-                      ></Link>
-                      <Button onClick={handleButtonClick}>View Details</Button>
-                    </div>
-                  </div>
+                        // style={{ display: "none" }}
+                      >
+                        
+                      <Button onClick={handleButtonClick} style={{ whiteSpace: 'nowrap' }} >View Details</Button>
+                      </Link>
+                    </div> 
+                  
                 </td>
               </tr>
             ))}
