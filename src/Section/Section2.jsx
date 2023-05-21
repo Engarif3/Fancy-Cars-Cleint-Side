@@ -12,8 +12,8 @@ const Section2 = () => {
     event.target.reset();
   };
   return (
-    <Container className="mt-5">
-      <h2 className="text-center mt-5 fst-italic">
+    <Container  style={{marginTop:"10rem"}}>
+      <h2 className="text-center fst-italic">
         Your Opinion Matters. We will get back to you.
       </h2>
       <div className="d-md-flex d-lg-flex justify-content-center align-items-center">

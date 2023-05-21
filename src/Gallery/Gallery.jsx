@@ -25,7 +25,7 @@ const Gallery = () => {
         <div>
         <HomeBanner></HomeBanner>
         <div>
-        <div className="container mt-4">
+        <div className="container" style={{marginTop:"5rem"}}>
         <h3 className="display-1 text-center mb-4 ">
             <strong>
             Fancy Cars Gallery 

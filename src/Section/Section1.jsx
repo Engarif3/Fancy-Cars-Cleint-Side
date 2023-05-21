@@ -13,7 +13,11 @@ const Section1 = () => {
 
   return (
     <div className="my-5">
-      <h1 className="text-center mb-4"> New Arrivals</h1>
+      <h3 className="display-1 text-center mb-4 ">
+            <strong>
+            New Arrivals
+            </strong>
+        </h3>
       
       <Container className="d-flex justify-content-center align-items-center gap-1">
         <div
