@@ -19,7 +19,7 @@ const Section1 = () => {
             </strong>
         </h3>
       
-      <Container className="d-flex justify-content-center align-items-center gap-1">
+      <Container className="d-md-flex d-lg-flex justify-content-center align-items-center gap-1">
         <div
           data-aos="fade-right"
           data-aos-duration="1000"
