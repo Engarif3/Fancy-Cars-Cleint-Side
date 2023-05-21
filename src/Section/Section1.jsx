@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Container } from "react-bootstrap";
+import img1 from "../assets/s1.jpg";
+import img4 from "../assets/s4.jpg";
+import img3 from "../assets/s3.jpg";
 
 
 const Section1 = () => {
@@ -33,7 +36,7 @@ const Section1 = () => {
         >
           <img
             className="img-fluid "
-            src="https://images-na.ssl-images-amazon.com/images/I/51SEsclwHqL.jpg"
+            src={img1}
             alt=""
             style={{ borderRadius: "15px 15px" }}
           />
@@ -52,7 +55,7 @@ const Section1 = () => {
         >
           <img
             className="img-fluid w-100 h-100 mx-auto "
-            src="https://4.imimg.com/data4/SP/DC/ANDROID-3155844/product-1000x1000.jpeg"
+            src={img4}
             alt=""
             style={{ borderRadius: "15px 15px" }}
           />
@@ -71,7 +74,7 @@ const Section1 = () => {
         >
           <img
             className="img-fluid w-100 h-100 mx-auto "
-            src="https://rukminim1.flixcart.com/image/832/832/khuvxjk0-0/vehicle-pull-along/x/w/y/friction-powered-mini-monster-cars-for-kids-with-big-rubber-original-imafxruqgz7rw4xw.jpeg?q=70"
+            src={img3}
             alt=""
             style={{ borderRadius: "15px 15px" }}
           />
