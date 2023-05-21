@@ -25,7 +25,7 @@ const Section1 = () => {
       <Container className="d-md-flex d-lg-flex justify-content-center align-items-center gap-1">
         <div
           data-aos="fade-right"
-          data-aos-duration="1000"
+          data-aos-duration="3000"
           className="m-auto border border-2 rounded-4 border-text-danger "
           style={{
             width: "25rem",
@@ -44,7 +44,7 @@ const Section1 = () => {
         </div>
         <div
           data-aos="zoom-in"
-          data-aos-duration="1000"
+          data-aos-duration="3000"
           className="m-auto border border-2 rounded-4 border-text-danger "
           style={{
             width: "25rem",
@@ -63,7 +63,7 @@ const Section1 = () => {
         </div>
         <div
           data-aos="fade-left"
-          data-aos-duration="1000"
+          data-aos-duration="3000"
           className="m-auto border border-2 rounded-4 border-text-danger "
           style={{
             width: "25rem",

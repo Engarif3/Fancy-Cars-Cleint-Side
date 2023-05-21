@@ -6,12 +6,14 @@ import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const AllToys = () => {
   const linkRef = useRef(null);
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [searchText, setSearchText] = useState("");
+  useTitle("All Toys");
 
   useEffect(() => {
     fetch("https://fancy-car.vercel.app/allToys")

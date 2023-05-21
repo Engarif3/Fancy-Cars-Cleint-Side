@@ -5,6 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import UpdateToyModal from "./UpdateToyModal";
 import Swal from "sweetalert2";
 import { Container } from "react-bootstrap";
+import useTitle from "../../Hooks/useTitle";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -12,11 +13,11 @@ const MyToys = () => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [editedToy, setEditedToy] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
-  
+  useTitle("My Toys");
 
   useEffect(() => {
-    const userEmail = user.email; 
-  
+    const userEmail = user.email;
+
     fetch(`https://fancy-car.vercel.app/myToy?userId=${userEmail}`)
       .then((res) => res.json())
       .then((data) => {
@@ -24,8 +25,6 @@ const MyToys = () => {
         setToys(sortedData);
       });
   }, [sortOrder]);
-  
-  
 
   const handleToyUpdate = (data) => {
     fetch(`https://fancy-car.vercel.app/updateToy/${data._id}`, {
@@ -54,26 +53,26 @@ const MyToys = () => {
 
   const handleDelete = (id) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You will not be able to recover this item!',
-      icon: 'warning',
+      title: "Are you sure?",
+      text: "You will not be able to recover this item!",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`https://fancy-car.vercel.app/myToy/${id}`, {
-          method: 'DELETE',
+          method: "DELETE",
         })
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire({
-                title: 'Success!',
-                text: 'Deleted Successfully',
-                icon: 'success',
-                confirmButtonText: 'Ok'
+                title: "Success!",
+                text: "Deleted Successfully",
+                icon: "success",
+                confirmButtonText: "Ok",
               });
               const remaining = toys.filter((toy) => toy._id !== id);
               setToys(remaining);
@@ -90,8 +89,10 @@ const MyToys = () => {
 
   const compareByPrice = (order) => {
     return function (a, b) {
-      const priceA = typeof a.price === "string" ? parseFloat(a.price) : a.price;
-      const priceB = typeof b.price === "string" ? parseFloat(b.price) : b.price;
+      const priceA =
+        typeof a.price === "string" ? parseFloat(a.price) : a.price;
+      const priceB =
+        typeof b.price === "string" ? parseFloat(b.price) : b.price;
 
       if (priceA < priceB) {
         return order === "asc" ? -1 : 1;
@@ -119,11 +120,10 @@ const MyToys = () => {
       <div className="my-jobs-container">
         <h1 className="text-center p-4">My Toys</h1>
         <div className="p-2 text-center d-flex justify-content-end align-items-center gap-2">
-          
-          <div className="fw-bold">Sort Price:</div> <Button variant="dark" onClick={handleSortToggle}>
-                  {sortOrder === "asc" ? "High to Low" : "Low to High"}
-                </Button>
-    
+          <div className="fw-bold">Sort Price:</div>{" "}
+          <Button variant="dark" onClick={handleSortToggle}>
+            {sortOrder === "asc" ? "High to Low" : "Low to High"}
+          </Button>
         </div>
 
         <Table striped bordered hover className="container">
@@ -133,9 +133,7 @@ const MyToys = () => {
               <th>Toy Name</th>
               <th>Seller Name</th>
               <th>Seller Email</th>
-              <th>
-                Price ($)
-              </th>
+              <th>Price ($)</th>
               <th>Rating</th>
               <th>Quantity</th>
               <th>Category</th>

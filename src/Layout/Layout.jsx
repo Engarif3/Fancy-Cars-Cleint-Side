@@ -2,8 +2,10 @@ import React from "react";
 import Navigationbar from "../shared/Navbar/Navigationbar";
 import { Outlet } from "react-router-dom";
 import Footer from "../shared/Footer/Footer";
+import useTitle from "../Hooks/useTitle";
 
 const Layout = () => {
+  useTitle("Home");
   const style = {
     backgroundColor: "#F8F8F8",
     borderTop: "1px solid #E7E7E7",

@@ -1,7 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import useTitle from "../../Hooks/useTitle";
 
 const Blog = () => {
+  useTitle("Blog");
   return (
     <Container className="text -center m-auto my-4">
       <div id="print-container">
@@ -39,7 +41,7 @@ const Blog = () => {
         <div>
           <h5>2. Compare SQL and NoSQL databases? </h5> <br />
 
-          <p className="ps-4">
+          <div className="ps-4">
             <h6><b className="text-decoration-underline">SQL Databases:</b></h6> 
             <b>Structure:</b> SQL databases use a structured schema, meaning data is
             organized into tables with predefined columns and rows. <br />{" "}
@@ -67,10 +69,10 @@ const Blog = () => {
             <b>Querying:</b> NoSQL databases often have simpler query capabilities
             compared to SQL databases, with a focus on high-performance
             retrieval of specific data.{" "}
-          </p>
+          </div>
         </div>
 
-        <div>
+        <div className="mt-4">
           <h5>3. What is express js? What is Next JS?</h5>
           <p className="ps-4">
             <b>Express.js</b> is a web application framework for Node.js that

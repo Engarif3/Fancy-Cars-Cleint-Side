@@ -3,9 +3,12 @@ import { Button, Container, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaGoogle} from 'react-icons/fa';
+import useTitle from "../Hooks/useTitle";
 
 
 const Login = () => {
+
+  useTitle("Login");
 
   const [error, setError] = useState();
   const { signIn, googleSignIn} = useContext(AuthContext);

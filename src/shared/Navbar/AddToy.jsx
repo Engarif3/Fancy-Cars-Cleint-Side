@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../Provider/AuthProvider";
+import useTitle from "../../Hooks/useTitle";
 
 const AddToy = () => {
   const { user, logOut } = useContext(AuthContext);
   const [selectedCategory, setSelectedCategory] = useState("");
+  useTitle("Add A Toy");
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
