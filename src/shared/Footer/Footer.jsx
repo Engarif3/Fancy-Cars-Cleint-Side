@@ -7,38 +7,44 @@ const Footer = () => {
   return (
     <div>
       <div className="d-flex align-items-center justify-content-between ">
-        <div className="d-flex justify-content-center align-items-center gap-2">
-        <div className="mb-4">
+        <div className="d-flex justify-content-center align-items-center">
+        <div className="mb-2">
           <img style={{ width: "80px" }} src={logo1} alt="" />
-          <h5 className="ms-5 text-danger fw-bold fst-italic mb-2">
-            &nbsp; Fancy-Cars
+          <h5 className=" text-danger fw-bold fst-italic">
+            &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fancy-Cars
           </h5>
         </div>
-        <h6 className="fst-italic mt-4">
+        {/* <h6 className="fst-italic mt-5">
+          <br />
           &copy; 2023 Fancy-Cars Inc. All rights reserved.
-        </h6>
+        </h6> */}
         </div>
         
         <div
-          className=" d-flex gap-4 align-items-center justify-content-center mb-4"
+          className=" d-flex  gap-4 me-3 align-items-center justify-content-center mb-0"
           style={{ fontSize: "25px" }}
         >
           <a href="https://www.facebook.com/">
-            <FaFacebook className="mr-2" />
+            <FaFacebook className="mr-2 text-white" />
           </a>
 
           <a href="https://www.instagram.com/">
-            <FaInstagram className="mr-2" />
+            <FaInstagram className="mr-2 text-white" />
           </a>
           <a href="https://www.twitter.com/">
-            <FaTwitter className="mr-2" />
+            <FaTwitter className="mr-2 text-white" />
           </a>
         </div>
-        <div className="text-start">
+        <div className="text-start me-4 mt-3">
           <FaMobile className="text-white"></FaMobile>{" "}
           <span className="fst-italic">+49-15203555728</span>
           <p className="fst-italic">Address: Reichenhainer str.51 <br /> 09126, Chemnitz <br /> Germany</p>
         </div>
+      </div>
+      <div className="text-center m-0 p-0">
+      <h6 className="fst-italic mt-0">
+          &copy; 2023 Fancy-Cars Inc. All rights reserved.
+        </h6>
       </div>
     </div>
   );

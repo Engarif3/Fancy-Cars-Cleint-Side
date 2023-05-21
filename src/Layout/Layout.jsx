@@ -7,7 +7,7 @@ import Footer from "../shared/Footer/Footer";
 const Layout = () => {
  
   const style = {
-    backgroundColor: "#F8F8F8",
+    backgroundColor: "#142c64",
     borderTop: "1px solid #E7E7E7",
     textAlign: "center",
     padding: "10px",
@@ -21,7 +21,7 @@ const Layout = () => {
       <Navigationbar />
       <Outlet />
       <div style={footerContainer}>
-        <div style={style} className="bg-black text-white">
+        <div style={style} className=" text-white">
           <Footer />
         </div>
       </div>

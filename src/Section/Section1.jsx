@@ -3,9 +3,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Container } from "react-bootstrap";
 import img1 from "../assets/s1.jpg";
-import img4 from "../assets/s4.jpg";
 import img3 from "../assets/s3.jpg";
-
+import img4 from "../assets/s4.jpg";
+import Marquee from "react-fast-marquee";
 
 const Section1 = () => {
   useEffect(() => {
@@ -17,15 +17,13 @@ const Section1 = () => {
   return (
     <div className="my-5">
       <h3 className="display-1 text-center mb-4 ">
-            <strong>
-            New Arrivals
-            </strong>
-        </h3>
-      
+        <strong>New Arrivals</strong>
+      </h3>
+
       <Container className="d-md-flex d-lg-flex justify-content-center align-items-center gap-1">
         <div
           data-aos="fade-right"
-          data-aos-duration="3000"
+          data-aos-duration="2000"
           className="m-auto border border-2 rounded-4 border-text-danger "
           style={{
             width: "25rem",
@@ -44,7 +42,7 @@ const Section1 = () => {
         </div>
         <div
           data-aos="zoom-in"
-          data-aos-duration="3000"
+          data-aos-duration="2000"
           className="m-auto border border-2 rounded-4 border-text-danger "
           style={{
             width: "25rem",
@@ -63,7 +61,7 @@ const Section1 = () => {
         </div>
         <div
           data-aos="fade-left"
-          data-aos-duration="3000"
+          data-aos-duration="2000"
           className="m-auto border border-2 rounded-4 border-text-danger "
           style={{
             width: "25rem",
@@ -81,6 +79,11 @@ const Section1 = () => {
           <h3 className="text-center">Mini Monster</h3>
         </div>
       </Container>
+      <div>
+        <Marquee className="mt-5 fst-italic text-danger">
+          <h2>For more details contact with us for exciting deals and offers. email: fancy-cars@gmail.com.</h2>
+        </Marquee>
+      </div>
     </div>
   );
 };

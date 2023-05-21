@@ -12,7 +12,7 @@ const Section2 = () => {
     event.target.reset();
   };
   return (
-    <Container  style={{marginTop:"10rem"}}>
+    <Container  style={{marginTop:"5rem"}}>
       <h2 className="text-center fst-italic">
         Your Opinion Matters. We will get back to you.
       </h2>

@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
+    "react-fast-marquee": "^1.5.2",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-lazy-load": "^4.0.1",

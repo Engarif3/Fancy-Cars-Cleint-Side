@@ -90,7 +90,7 @@ const ShopByCategory = () => {
                         </Button>
                       </div>
                     </div>
-                    <p style={{ color: "green" }}>
+                    <p style={{ color: "black" }}>
                       Toy Name: {toy.toyName}
                       <br />
                       Rating: {toy.rating}
